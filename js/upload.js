@@ -23,7 +23,7 @@ function readFileAsync(file) {
         // console.log(readXml);
         var parser = new DOMParser();
         var doc = parser.parseFromString(readXml, "text/html");
-		await parseReport(doc);		
+		parseReport(doc);		
 		resolve(reader.result);
     };
     reader.onerror = reject;
