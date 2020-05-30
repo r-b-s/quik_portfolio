@@ -24,7 +24,7 @@ async function parseReport(doc){
 		}		
 	});
 	console.log(data);
-	$('#log').append(data.positions.length+" positions added");
+	$('#log').append(data.positions.length+" positions added<br>");
 }
 
 async function processFiles(array) {
@@ -63,7 +63,7 @@ $( document ).ready(function() {
 		var readXml=null;
 		$('#xmlForm').submit(function(event) {
 			event.preventDefault();
-			processFiles(document.getElementById('input').files);
+			await processFiles(document.getElementById('input').files);
 			document.getElementById('input').value="";
 		});
 });	   
