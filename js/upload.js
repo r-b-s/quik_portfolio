@@ -1,5 +1,5 @@
 async function parseReport(doc){
-	var data={"deals:"[],"portfolio":[]};
+	var data={"deals":[],"portfolio":[]};
 	console.log(doc.body);
 	//console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
 	var tr=doc.querySelectorAll("body > table:nth-child(2) > tbody > tr");
@@ -20,17 +20,10 @@ async function parseReport(doc){
 				,"endQty": parseFloat(e.querySelector("td:nth-child(6)").innerText.replace(/\s/g, ''))
 				,"beginValue:":parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))
 				,"endValue":parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, ''))
-				});
-			//console.log(e.querySelector("td:nth-child(1)").innerText+" "+parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, '')));
+			});
 		}		
 	});
 	console.log(data);
-	//return await Promise.resolve(1);	
-}
-
-async function readFile(item,reader) {
-  reader.readAsText(item);
-  return await Promise.resolve(1);
 }
 
 async function processFiles(array) {
