@@ -36,3 +36,6 @@ function dropLogin(){
 }
 
 
+$( document ).ready(function() {
+	setLogin();
+});
