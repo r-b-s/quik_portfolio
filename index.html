@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="//ulogin.ru/js/ulogin.js"></script>
-	<script>
-function preview(token){
-    $.getJSON("//ulogin.ru/token.php?host=" +
-        encodeURIComponent(location.toString()) + "&token=" + token + "&callback=?",
-    function(data){
-        data=$.parseJSON(data.toString());
-        if(!data.error){
-            console.log(data);
-       	 }
-    });
-}
-	</script>
+	<script src="./js/ulogin.js></script>
 	
-    <title></title>
-	
+    <title></title>	
 </head>
 <body>
 
-<div id="uLogin" data-ulogin="callback=preview;display=panel;theme=flat;fields=first_name,last_name;providers=vkontakte,odnoklassniki,linkedin,facebook,instagram;hidden=google,mailru,yandex,twitter,openid,tumblr,vimeo;redirect_uri=;mobilebuttons=0;"></div>
-
-
+<div id="uLogin" data-ulogin="callback=setSession;display=panel;theme=flat;fields=first_name,last_name;providers=vkontakte,odnoklassniki,linkedin,facebook,instagram;hidden=google,mailru,yandex,twitter,openid,tumblr,vimeo;redirect_uri=;mobilebuttons=0;"></div>
+<div id="userPanel" ><p id="userName"></p><button onclick="dropLogin()">Exit</button></div>
 
 </body>
 </html>
