@@ -18,7 +18,7 @@ async function processArray(array) {
 function readFileAsync(file) {
   return new Promise((resolve, reject) => {
     let reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = (file) => {
 		readXml=file.target.result;
         // console.log(readXml);
         var parser = new DOMParser();
