@@ -19,7 +19,7 @@ function setLogin(){
 	if (!!sessionStorage.identity){
 		$('#uLogin').hide();
 		$('#userPanel').show();		
-		$('#userName').innerText=sessionStorage.first_name+" "+sessionStorage.last_name;
+		$('#userName').text(sessionStorage.first_name+" "+sessionStorage.last_name);
 	}
 	else{
 		$('#uLogin').show();
