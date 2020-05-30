@@ -1,5 +1,5 @@
 async function parseReport(doc){
-	var data={"deals":[],"portfolio":[]};
+	var data={"deals":[],"positions":[]};
 	console.log(doc.body);
 	//console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
 	var tr=doc.querySelectorAll("body > table:nth-child(2) > tbody > tr");
@@ -13,7 +13,7 @@ async function parseReport(doc){
 					,"deltaValue:":parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, '')) - parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))					
 				});
 			}
-			data.portfolio.push({
+			data.positions.push({
 				"Ticker": e.querySelector("td:nth-child(1)").innerText
 				,"Name": e.querySelector("td:nth-child(2)").innerText
 				,"beginQty": parseFloat(e.querySelector("td:nth-child(4)").innerText.replace(/\s/g, ''))
@@ -24,6 +24,7 @@ async function parseReport(doc){
 		}		
 	});
 	console.log(data);
+	$('#log').append(data.positions.length()+" positions added");
 }
 
 async function processFiles(array) {
