@@ -2,7 +2,7 @@ async function parseReport(doc){
 	var data={
 			"user":{
 				"identity":sessionStorage.identity
-				,"uidHash":CryptoJS.MD5(sessionStorage.uid+sessionStorage.identity)				
+				,"uidHash":CryptoJS.MD5(sessionStorage.uid+sessionStorage.identity).toString();				
 			}
 			,"portfolio":{}
 			,"deals":[]
@@ -49,7 +49,7 @@ async function parseReport(doc){
 		}		
 	});
 	console.log(data);
-	$('#log').append(dt[0]+" "+fl[1]+" "+data.positions.length+" positions parsed<br>");
+	$('#log').append(dt[0]+" | "+fl[1]+" | "+data.positions.length+" positions parsed<br>");
 }
 
 async function processFiles(array) {
