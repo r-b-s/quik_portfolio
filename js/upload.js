@@ -4,7 +4,7 @@ async function parseReport(doc){
 }
 
 async function readFile(item,reader) {
-  await reader.readAsText(item);
+  reader.readAsText(item);
 }
 
 async function processArray(array,reader) {
@@ -32,7 +32,7 @@ $( document ).ready(function() {
            //var selectedFile = document.getElementById('input').files[0];
            //console.log(selectedFile);
            var reader = new FileReader();
-           reader.onload =async function(e) {
+           reader.onload =function(e) {
                readXml=e.target.result;
               // console.log(readXml);
                var parser = new DOMParser();
