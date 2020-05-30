@@ -1,10 +1,12 @@
 async function parseReport(doc){
 	console.log(doc.body);
-	console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));			   
+	console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
+	return await Promise.resolve(1);	
 }
 
 async function readFile(item,reader) {
   reader.readAsText(item);
+  return await Promise.resolve(1);
 }
 
 async function processArray(array,reader) {
@@ -37,7 +39,7 @@ $( document ).ready(function() {
               // console.log(readXml);
                var parser = new DOMParser();
                var doc = parser.parseFromString(readXml, "text/html");
-			   await parseReport(doc);			   
+			   return await parseReport(doc);			   
 			}
 			//reader.readAsText(selectedFile);
 			processArray(document.getElementById('input').files,reader);
