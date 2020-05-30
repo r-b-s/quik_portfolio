@@ -3,7 +3,7 @@ async function parseReport(doc){
 	//console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
 	var tr=doc.querySelectorAll("body > table:nth-child(2) > tbody > tr");
 	tr.forEach((e)=>{
-		console.log(e.querySelector("td:nth-child(1)").innerText+" "+parseFloat(e.querySelector("td:nth-child(7)").innerText));
+		console.log(e.querySelector("td:nth-child(1)").innerText+" "+parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, '')));
 	});
 	
 	//return await Promise.resolve(1);	
