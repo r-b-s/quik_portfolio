@@ -30,7 +30,7 @@ $( document ).ready(function() {
 			}
 			//reader.readAsText(selectedFile);
 			Array.prototype.forEach.call(document.getElementById('input').files,async function(f){
-				reader.readAsText(f);
+				await reader.readAsText(f);
 			});
 		});
 });	   
