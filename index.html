@@ -24,34 +24,7 @@ function preview(token){
 
 <div id="uLogin" data-ulogin="callback=preview;display=panel;theme=flat;fields=first_name,last_name;providers=vkontakte,odnoklassniki,linkedin,facebook,instagram;hidden=google,mailru,yandex,twitter,openid,tumblr,vimeo;redirect_uri=;mobilebuttons=0;"></div>
 
-Drag and drop files or browse
-    <form id="xmlForm" name="xmlForm">
-        <input id="input" type="file" multiple> <input type="submit">
-    </form>
 
-
-    <script>
-	
-       var readXml=null;
-       $('#xmlForm').submit(function(event) {
-           event.preventDefault();
-           var selectedFile = document.getElementById('input').files[0];
-           //console.log(selectedFile);
-           var reader = new FileReader();
-           reader.onload = function(e) {
-               readXml=e.target.result;
-              // console.log(readXml);
-               var parser = new DOMParser();
-               var doc = parser.parseFromString(readXml, "text/html");
-			   console.log(doc.body);
-               console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));
-			   
-           }
-           reader.readAsText(selectedFile);
-
-       });
-    </script>
-	
 
 </body>
 </html>
