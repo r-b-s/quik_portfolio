@@ -4,6 +4,23 @@ function parseReport(doc){
 			   
 }
 
+function delay() {
+  return new Promise(resolve => setTimeout(resolve, 100));
+}
+
+async function delayedLog(item) {
+  await delay();
+  //console.log(item);
+  await reader.readAsText(item);
+}
+async function processArray(array) {
+  for (const item of array) {
+    await delayedLog(item);
+  }
+  console.log('Done!');
+}
+
+
 $( document ).ready(function() {
 		if (!!sessionStorage.identity){
 			$('#uploader').show();
@@ -29,8 +46,6 @@ $( document ).ready(function() {
 			   parseReport(doc);			   
 			}
 			//reader.readAsText(selectedFile);
-			Array.prototype.forEach.call(document.getElementById('input').files,async function(f){
-				await reader.readAsText(f);
-			});
+			processArray(document.getElementById('input').files);
 		});
 });	   
