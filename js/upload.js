@@ -3,18 +3,13 @@ async function parseReport(doc){
 	console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));			   
 }
 
-function delay() {
-  return new Promise(resolve => setTimeout(resolve, 100));
-}
-
-async function delayedLog(item,reader) {
-  await delay();
-  //console.log(item);
+async function readFile(item,reader) {
   await reader.readAsText(item);
 }
+
 async function processArray(array,reader) {
   for (const item of array) {
-    await delayedLog(item,reader);
+    await readFile(item,reader);
   }
   console.log('Done!');
 }
