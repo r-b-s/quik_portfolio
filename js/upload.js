@@ -9,7 +9,7 @@ async function readFile(item,reader) {
   return await Promise.resolve(1);
 }
 
-async function processArray(array) {
+async function processFiles(array) {
   for (const item of array) {
     await readFileAsync(item);
   }
@@ -52,6 +52,6 @@ $( document ).ready(function() {
                	   
 			//}
 			//reader.readAsText(selectedFile);
-			processArray(document.getElementById('input').files);
+			processFiles(document.getElementById('input').files);
 		});
 });	   
