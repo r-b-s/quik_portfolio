@@ -32,7 +32,7 @@ $( document ).ready(function() {
            //var selectedFile = document.getElementById('input').files[0];
            //console.log(selectedFile);
            var reader = new FileReader();
-           reader.onload =function(e) {
+           reader.onload =async function(e) {
                readXml=e.target.result;
               // console.log(readXml);
                var parser = new DOMParser();
