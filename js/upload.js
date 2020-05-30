@@ -24,7 +24,7 @@ async function parseReport(doc){
 		}		
 	});
 	console.log(data);
-	$('#log').append(data.positions.length()+" positions added");
+	$('#log').append(data.positions.length+" positions added");
 }
 
 async function processFiles(array) {
