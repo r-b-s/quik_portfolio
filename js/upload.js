@@ -1,6 +1,11 @@
 async function parseReport(doc){
 	console.log(doc.body);
-	console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
+	//console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
+	var tr=doc.querySelectorAll("body > table:nth-child(2) > tbody > tr");
+	tr.forEach((e)=>{
+		console.log(e.querySelector("td:nth-child(1)").innerText+" "+parseFloat(e.querySelector("td:nth-child(7)").innerText));
+	});
+	
 	//return await Promise.resolve(1);	
 }
 
@@ -15,12 +20,12 @@ async function processFiles(array) {
   }
   console.log('Done!');
 }
+
 function readFileAsync(file) {
   return new Promise((resolve, reject) => {
     let reader = new FileReader();
     reader.onload = (file) => {
 		readXml=file.target.result;
-        // console.log(readXml);
         var parser = new DOMParser();
         var doc = parser.parseFromString(readXml, "text/html");
 		parseReport(doc);		
@@ -44,14 +49,7 @@ $( document ).ready(function() {
 			
 		var readXml=null;
 		$('#xmlForm').submit(function(event) {
-           event.preventDefault();
-           //var selectedFile = document.getElementById('input').files[0];
-           //console.log(selectedFile);
-           //var reader = new FileReader();
-           //reader.onload =async function(e) {
-               	   
-			//}
-			//reader.readAsText(selectedFile);
+			event.preventDefault();
 			processFiles(document.getElementById('input').files);
 		});
 });	   
