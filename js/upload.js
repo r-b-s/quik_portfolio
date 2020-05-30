@@ -29,7 +29,7 @@ $( document ).ready(function() {
 			   parseReport(doc);			   
 			}
 			//reader.readAsText(selectedFile);
-			Array.prototype.forEach.call(document.getElementById('input').files, function(f){
+			Array.prototype.forEach.call(document.getElementById('input').files,async function(f){
 				reader.readAsText(f);
 			});
 		});
