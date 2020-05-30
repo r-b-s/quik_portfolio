@@ -63,5 +63,6 @@ $( document ).ready(function() {
 		$('#xmlForm').submit(function(event) {
 			event.preventDefault();
 			processFiles(document.getElementById('input').files);
+			document.getElementById('input').value="";
 		});
 });	   
