@@ -1,4 +1,4 @@
-function setSession(token){
+function getULogin(token){
     $.getJSON("//ulogin.ru/token.php?host=" +
         encodeURIComponent(location.toString()) + "&token=" + token + "&callback=?",
     function(data){
