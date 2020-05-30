@@ -10,6 +10,7 @@ function getULogin(token){
 			sessionStorage.last_name = data.last_name;
 			sessionStorage.profile = data.profile;
 			sessionStorage.uid = data.uid;
+			setLogin();
        	 }
     });
 }
@@ -27,11 +28,11 @@ function setLogin(){
 }
 
 function dropLogin(){
-	sessionStorage.identity = undefined;
-	sessionStorage.first_name = undefined;
-	sessionStorage.last_name = undefined;
-	sessionStorage.profile = undefined;
-	sessionStorage.uid = undefined;
+	sessionStorage.identity = "";
+	sessionStorage.first_name = "";
+	sessionStorage.last_name = "";
+	sessionStorage.profile = "";
+	sessionStorage.uid = "";
 	setLogin();
 }
 
