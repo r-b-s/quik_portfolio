@@ -49,7 +49,7 @@ async function parseReport(doc){
 		}		
 	});
 	console.log(data);
-	$('#log').append(data.positions.length+" positions parsed<br>");
+	$('#log').append(dt[0]+" "+fl[1]+" "+data.positions.length+" positions parsed<br>");
 }
 
 async function processFiles(array) {
