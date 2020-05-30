@@ -1,7 +1,32 @@
 async function parseReport(doc){
-	var data={"deals":[],"positions":[]};
+	var data={
+			"user":{
+				"identity":sessionStorage.identity
+				,"uidHash":md5(sessionStorage.uid+sessionStorage.identity)				
+			}
+			,"portfolio":{}
+			,"deals":[]
+			,"positions":[]		
+		};
 	console.log(doc.body);
 	//console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
+	var dateReg=/(\d{2})\.(\d{2})\.(\d{4})/;
+	var dt=doc.querySelector("body > table:nth-child(1) > tbody > tr:nth-child(1) > td").innerText.match(dateReg);
+	if (!dt) {
+		$('#log').append("Date not found<br>");
+		return;
+	}
+	else{
+		data.portfolio.date=new Date(dt[0].replace( dateReg, "$2/$1/$3"));		
+	}
+	var fl=doc.querySelector("body > table:nth-child(1) > tbody > tr:nth-child(3) > td").innerText.match(/:\s+(\S+)$/);
+	if (!fl) {
+		$('#log').append("Folder not found<br>");
+		return;
+	}
+	else{
+		data.portfolio.folder=fl[1];		
+	}
 	var tr=doc.querySelectorAll("body > table:nth-child(2) > tbody > tr");
 	tr.forEach((e)=>{			
 		if (e.querySelector("td:nth-child(3)").innerText=="T365"){
@@ -24,7 +49,7 @@ async function parseReport(doc){
 		}		
 	});
 	console.log(data);
-	$('#log').append(data.positions.length+" positions added<br>");
+	$('#log').append(data.positions.length+" positions parsed<br>");
 }
 
 async function processFiles(array) {
