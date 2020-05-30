@@ -1,20 +1,28 @@
 async function parseReport(doc){
-	var data={"portfolio":[]};
+	var data={"deals:"[],"portfolio":[]};
 	console.log(doc.body);
 	//console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
 	var tr=doc.querySelectorAll("body > table:nth-child(2) > tbody > tr");
-	tr.forEach((e)=>{
+	tr.forEach((e)=>{			
 		if (e.querySelector("td:nth-child(3)").innerText=="T365"){
+			if (e.querySelector("td:nth-child(4)").innerText!=e.querySelector("td:nth-child(6)").innerText){
+				data.deals.push({
+					"Ticker": e.querySelector("td:nth-child(1)").innerText
+					,"Name": e.querySelector("td:nth-child(2)").innerText
+					,"deltaQty": parseFloat(e.querySelector("td:nth-child(6)").innerText.replace(/\s/g, '')) - parseFloat(e.querySelector("td:nth-child(4)").innerText.replace(/\s/g, ''))					
+					,"deltaValue:":parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, '')) - parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))					
+				});
+			}
 			data.portfolio.push({
 				"Ticker": e.querySelector("td:nth-child(1)").innerText
 				,"Name": e.querySelector("td:nth-child(2)").innerText
-				,"beginQty": e.querySelector("td:nth-child(4)").innerText
-				,"endQty": e.querySelector("td:nth-child(6)").innerText
-				,"beginValue:":e.querySelector("td:nth-child(5)").innerText
-				,"endValue":e.querySelector("td:nth-child(7)").innerText
+				,"beginQty": parseFloat(e.querySelector("td:nth-child(4)").innerText.replace(/\s/g, ''))
+				,"endQty": parseFloat(e.querySelector("td:nth-child(6)").innerText.replace(/\s/g, ''))
+				,"beginValue:":parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))
+				,"endValue":parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, ''))
 				});
 			//console.log(e.querySelector("td:nth-child(1)").innerText+" "+parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, '')));
-		}
+		}		
 	});
 	console.log(data);
 	//return await Promise.resolve(1);	
