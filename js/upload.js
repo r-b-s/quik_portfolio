@@ -8,14 +8,14 @@ function delay() {
   return new Promise(resolve => setTimeout(resolve, 100));
 }
 
-async function delayedLog(item) {
+async function delayedLog(item,reader) {
   await delay();
   //console.log(item);
   await reader.readAsText(item);
 }
-async function processArray(array) {
+async function processArray(array,reader) {
   for (const item of array) {
-    await delayedLog(item);
+    await delayedLog(item,reader);
   }
   console.log('Done!');
 }
@@ -46,6 +46,6 @@ $( document ).ready(function() {
 			   parseReport(doc);			   
 			}
 			//reader.readAsText(selectedFile);
-			processArray(document.getElementById('input').files);
+			processArray(document.getElementById('input').files,reader);
 		});
 });	   
