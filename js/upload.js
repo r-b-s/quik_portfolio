@@ -59,7 +59,7 @@ async function parseReport(doc){
 			}
 			data.positions.push({
 				"Ticker": e.querySelector("td:nth-child(1)").innerText
-				,"Name": encodeURI(e.querySelector("td:nth-child(2)").innerText)
+				,"Name": e.querySelector("td:nth-child(2)").innerText
 				,"beginQty": parseFloat(e.querySelector("td:nth-child(4)").innerText.replace(/\s/g, ''))
 				,"endQty": parseFloat(e.querySelector("td:nth-child(6)").innerText.replace(/\s/g, ''))
 				,"beginValue:":parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))
@@ -112,7 +112,7 @@ function readFileAsync(file) {
 		resolve(reader.result);
     };
     reader.onerror = reject;
-    reader.readAsText(file);
+    reader.readAsText(file,"windows-1251");
   })
 }
 
