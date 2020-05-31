@@ -1,3 +1,23 @@
+var decodeMap = {};
+var win1251 = new TextDecoder("windows-1251");
+for (var i = 0x00; i < 0xFF; i++) {
+  var hex = (i <= 0x0F ? "0" : "") +      // zero-padded
+            i.toString(16).toUpperCase();
+  decodeMap[hex] = win1251.decode(Uint8Array.from([i]));
+}
+// console.log(decodeMap);
+// {"10":"\u0010", ... "40":"@","41":"A","42":"B", ... "C0":"À","C1":"Á", ...
+
+
+// Decodes a windows-1251 encoded string, additionally
+// encoded as an ASCII string where each non-ASCII character of the original
+// windows-1251 string is encoded as %XY where XY (uppercase!) is a
+// hexadecimal representation of that character's code in windows-1251.
+function percentEncodedWin1251ToDOMString(str) {
+  return str.replace(/%([0-9A-F]{2})/g,
+    (match, hex) => decodeMap[hex]);
+}
+
 async function parseReport(doc){
 	var data={
 			"user":{
@@ -39,7 +59,7 @@ async function parseReport(doc){
 			}
 			data.positions.push({
 				"Ticker": e.querySelector("td:nth-child(1)").innerText
-				,"Name":  iconv.encode (iconv.decode (new Buffer (e.querySelector("td:nth-child(2)").innerText, 'binary'), 'win1251'), 'utf8'));
+				,"Name": percentEncodedWin1251ToDOMString(e.querySelector("td:nth-child(2)").innerText)
 				,"beginQty": parseFloat(e.querySelector("td:nth-child(4)").innerText.replace(/\s/g, ''))
 				,"endQty": parseFloat(e.querySelector("td:nth-child(6)").innerText.replace(/\s/g, ''))
 				,"beginValue:":parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))
