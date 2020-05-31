@@ -54,6 +54,12 @@ async function parseReport(doc){
 
 
 function upload(data){
+	$.ajaxSetup({
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		}
+	});
 	$.post( "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/quik-rizhs/service/upload/incoming_webhook/upload", data,function(resp) {
 	  $('#log').append( resp.toString() );
 	},"json")
