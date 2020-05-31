@@ -62,7 +62,7 @@ async function parseReport(doc){
 				,"Name": e.querySelector("td:nth-child(2)").innerText
 				,"beginQty": parseFloat(e.querySelector("td:nth-child(4)").innerText.replace(/\s/g, ''))
 				,"endQty": parseFloat(e.querySelector("td:nth-child(6)").innerText.replace(/\s/g, ''))
-				,"beginValue:":parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))
+				,"beginValue":parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))
 				,"endValue":parseFloat(e.querySelector("td:nth-child(7)").innerText.replace(/\s/g, ''))
 			});
 		}		
