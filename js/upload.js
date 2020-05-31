@@ -60,7 +60,7 @@ function upload(data){
 			'Accept': 'application/json'
 		}
 	});
-	$.post( "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/quik-rizhs/service/upload/incoming_webhook/upload", data,function(resp) {
+	$.post( "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/quik-rizhs/service/upload/incoming_webhook/upload", JSON.stringify(data),function(resp) {
 	  $('#log').append( resp.toString() );
 	},"json")
 	  //.done(function() {
