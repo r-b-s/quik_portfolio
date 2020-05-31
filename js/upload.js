@@ -67,7 +67,7 @@ function upload(data){
 		//$('#log').append( "second success" );
 	  //})
 	  .fail(function() {
-		$('#log').append("error uploading to DB<br>");
+		$('#log').append("Error uploading to DB<br>");
 	  })
 	  //.always(function() {
 		//$('#log').append( "finished" );
