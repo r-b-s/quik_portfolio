@@ -39,7 +39,7 @@ async function parseReport(doc){
 			}
 			data.positions.push({
 				"Ticker": e.querySelector("td:nth-child(1)").innerText
-				,"Name": e.querySelector("td:nth-child(2)").innerText
+				,"Name":  iconv.encode (iconv.decode (new Buffer (e.querySelector("td:nth-child(2)").innerText, 'binary'), 'win1251'), 'utf8'));
 				,"beginQty": parseFloat(e.querySelector("td:nth-child(4)").innerText.replace(/\s/g, ''))
 				,"endQty": parseFloat(e.querySelector("td:nth-child(6)").innerText.replace(/\s/g, ''))
 				,"beginValue:":parseFloat(e.querySelector("td:nth-child(5)").innerText.replace(/\s/g, ''))
