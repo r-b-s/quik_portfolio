@@ -9,7 +9,6 @@ async function parseReport(doc){
 			,"positions":[]		
 		};
 	console.log(doc.body);
-	//console.log(parseFloat(doc.querySelector("body > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(7)").innerText.replace(/\s/g, '')));	
 	var dateReg=/(\d{2})\.(\d{2})\.(\d{4})/;
 	var dt=doc.querySelector("body > table:nth-child(1) > tbody > tr:nth-child(1) > td").innerText.match(dateReg);
 	if (!dt) {
@@ -49,7 +48,24 @@ async function parseReport(doc){
 		}		
 	});
 	console.log(data);
+	upload(data);
 	$('#log').append(dt[0]+" | "+fl[1]+" | "+data.positions.length+" positions parsed<br>");
+}
+
+
+function upload(data){
+	$.post( "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/quik-rizhs/service/upload/incoming_webhook/upload", data,function(resp) {
+	  $('#log').append( resp.toString() );
+	},"json")
+	  //.done(function() {
+		//$('#log').append( "second success" );
+	  //})
+	  .fail(function() {
+		$('#log').append("error uploading to DB<br>");
+	  })
+	  //.always(function() {
+		//$('#log').append( "finished" );
+	 // });
 }
 
 async function processFiles(array) {
