@@ -2,7 +2,7 @@ async function parseReport(doc){
 	var data={
 			"user":{
 				"identity":sessionStorage.identity
-				,"uidHash":CryptoJS.MD5(sessionStorage.uid+sessionStorage.identity).toString();				
+				,"uidHash":CryptoJS.MD5(sessionStorage.uid+sessionStorage.identity).toString()			
 			}
 			,"portfolio":{}
 			,"deals":[]
