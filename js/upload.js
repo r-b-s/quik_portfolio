@@ -81,7 +81,7 @@ function upload(data){
 		}
 	});
 	$.post( "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/quik-rizhs/service/upload/incoming_webhook/upload", JSON.stringify(data),function(resp) {
-	  $('#log').append( resp.toString() );
+	  $('#log').append( resp.toString()+"<br>" );
 	},"json")
 	  //.done(function() {
 		//$('#log').append( "second success" );
