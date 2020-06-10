@@ -39,4 +39,7 @@ function dropLogin(){
 
 $( document ).ready(function() {
 	setLogin();
+	 $( function() {
+		$( "#selectable" ).selectable();
+	  } );
 });

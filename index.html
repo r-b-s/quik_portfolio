@@ -2,15 +2,41 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="//ulogin.ru/js/ulogin.js"></script>
 	<script src="./js/ulogin.js"></script>
 	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+ 
+  <style>
+  #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+  </style>
+
     <title></title>	
 </head>
 <body>
 
 <div id="uLogin" data-ulogin="callback=getULogin;display=panel;theme=flat;fields=first_name,last_name;providers=vkontakte,odnoklassniki,linkedin,facebook,instagram;hidden=google,mailru,yandex,twitter,openid,tumblr,vimeo;redirect_uri=;mobilebuttons=0;"></div>
 <div id="userPanel" ><span id="userName"></span> <button onclick="dropLogin()">Exit</button> <br><a href="./upload">Upload reports</a></div>
+
+<div id="userData">
+
+<ol id="selectable">
+  <li class="ui-widget-content">Item 1</li>
+  <li class="ui-widget-content">Item 2</li>
+  <li class="ui-widget-content">Item 3</li>
+  <li class="ui-widget-content">Item 4</li>
+  <li class="ui-widget-content">Item 5</li>
+  <li class="ui-widget-content">Item 6</li>
+  <li class="ui-widget-content">Item 7</li>
+</ol>
+
+</div>
 
 </body>
 

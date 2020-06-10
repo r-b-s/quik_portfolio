@@ -5,7 +5,6 @@ async function parseReport(doc){
 				,"uidHash":CryptoJS.MD5(sessionStorage.uid+sessionStorage.identity).toString()			
 			}
 			,"portfolio":{}
-			,"deals":[]
 			,"positions":[]		
 		};
 	console.log(doc.body);
